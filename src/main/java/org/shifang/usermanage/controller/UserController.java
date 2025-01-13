@@ -1,6 +1,7 @@
 package org.shifang.usermanage.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import org.shifang.usermanage.anno.Log;
 import org.shifang.usermanage.pojo.PageBean;
 import org.shifang.usermanage.pojo.Result;
 import org.shifang.usermanage.pojo.User;
@@ -23,7 +24,6 @@ public class UserController {
         User user = userService.getUserById(id);
         return Result.success(user);
     }
-
     @GetMapping("/all")
     public Result getAllUsers() {
         log.info("getAllUsers");
@@ -37,14 +37,17 @@ public class UserController {
         log.info("getUserByPage:{},{}",page,pageSize);
         PageBean pageBean=userService.getUserByPage(page,pageSize);
         return Result.success(pageBean);
+
     }
+    @Log
+
     @PostMapping
     public Result insertUser(@RequestBody User user) {
         log.info("insertUser:{}",user);
         userService.insertUser(user);
         return Result.success();
     }
-
+    @Log
     @PutMapping
     public Result updateUser(@RequestBody User user) {
         log.info("updateUser:{}",user);
@@ -52,6 +55,7 @@ public class UserController {
         return Result.success(user);
     }
 
+    @Log
     @DeleteMapping("/{id}")
     public Result deleteUser(@PathVariable int id) {
         log.info("deleteUser:{}",id);
