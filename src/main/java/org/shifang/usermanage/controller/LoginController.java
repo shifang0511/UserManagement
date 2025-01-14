@@ -1,5 +1,6 @@
 package org.shifang.usermanage.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.annotations.Mapper;
 import org.shifang.usermanage.pojo.Result;
@@ -21,6 +22,7 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
+    @Operation(summary = "普通body请求")
     @PostMapping("/login")
     public Result login(@RequestBody User user) {
         log.info("login:{}",user);

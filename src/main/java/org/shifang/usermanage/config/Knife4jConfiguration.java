@@ -1,4 +1,4 @@
-package com.example.helloknf4j.config;
+package org.shifang.usermanage.config;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
@@ -13,9 +13,9 @@ public class Knife4jConfiguration {
     public OpenAPI openAPI() {
         return new OpenAPI()
                 .info(new Info()
-                        .title("hello-knife4j项目API")
+                        .title("UserManagement API")
                         .version("1.0")
-                        .description("hello-knife4j项目的接口文档"));
+                        .description("UserManagement API的接口文档"));
     }
 
     @Bean //接口分组
@@ -27,8 +27,8 @@ public class Knife4jConfiguration {
 
     @Bean //接口分组
     public GroupedOpenApi systemAPI() {
-        return GroupedOpenApi.builder().group("产品信息管理").
-                pathsToMatch("/product/**").
+        return GroupedOpenApi.builder().group("登陆信息管理").
+                pathsToMatch("/login/**").
                 build();
     }
 }
